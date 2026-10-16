@@ -1,0 +1,51 @@
+{
+  "input_file": "data/raw/data2/used_cars.csv",
+  "output_file": "data/processed/data2_cleaned.csv",
+  "raw_rows": 4009,
+  "cleaned_rows": 4009,
+  "exact_duplicates_removed_after_normalization": 0,
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "output_columns": [
+    "brand",
+    "model",
+    "model_year",
+    "mileage",
+    "fuel_type",
+    "engine",
+    "transmission",
+    "exterior_color",
+    "interior_color",
+    "accident",
+    "clean_title",
+    "price"
+  ],
+  "missing_counts_after_normalization": {
+    "brand": 0,
+    "model": 0,
+    "model_year": 0,
+    "mileage": 0,
+    "fuel_type": 215,
+    "engine": 45,
+    "transmission": 4,
+    "exterior_color": 15,
+    "interior_color": 133,
+    "accident": 113,
+    "clean_title": 596,
+    "price": 0
+  },
+  "numeric_ranges": {
+    "model_year": {
+      "minimum": 1974,
+      "maximum": 2024
+    },
+    "mileage": {
+      "minimum": 100,
+      "maximum": 405000
+    },
+    "price": {
+      "minimum": 2000,
+      "maximum": 2954083
+    }
+  }
+}

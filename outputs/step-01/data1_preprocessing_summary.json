@@ -1,0 +1,127 @@
+{
+  "input_directory": "data/raw/data1",
+  "output_file": "data/processed/data1_cleaned.csv",
+  "included_files": [
+    "audi.csv",
+    "bmw.csv",
+    "ford.csv",
+    "hyundi.csv",
+    "merc.csv",
+    "skoda.csv",
+    "toyota.csv",
+    "vauxhall.csv",
+    "vw.csv"
+  ],
+  "excluded_auxiliary_files": [
+    "cclass.csv",
+    "focus.csv",
+    "unclean cclass.csv",
+    "unclean focus.csv"
+  ],
+  "raw_rows": 99187,
+  "cleaned_rows": 97711,
+  "exact_duplicates_removed": 1475,
+  "rejected_rows": 1,
+  "rejection_reasons": {
+    "year_outside_1970_2020": 1
+  },
+  "engine_size_zero_converted_to_missing": 268,
+  "output_columns": [
+    "brand",
+    "model",
+    "year",
+    "price",
+    "transmission",
+    "mileage",
+    "fuel_type",
+    "tax",
+    "mpg",
+    "engine_size",
+    "engine_size_missing"
+  ],
+  "per_file": [
+    {
+      "file": "audi.csv",
+      "brand": "Audi",
+      "raw_rows": 10668,
+      "accepted_rows": 10565,
+      "exact_duplicates_removed": 103,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "bmw.csv",
+      "brand": "BMW",
+      "raw_rows": 10781,
+      "accepted_rows": 10664,
+      "exact_duplicates_removed": 117,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "ford.csv",
+      "brand": "Ford",
+      "raw_rows": 17965,
+      "accepted_rows": 17810,
+      "exact_duplicates_removed": 154,
+      "rejected_rows": 1,
+      "rejection_reasons": {
+        "year_outside_1970_2020": 1
+      }
+    },
+    {
+      "file": "hyundi.csv",
+      "brand": "Hyundai",
+      "raw_rows": 4860,
+      "accepted_rows": 4774,
+      "exact_duplicates_removed": 86,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "merc.csv",
+      "brand": "Mercedes-Benz",
+      "raw_rows": 13119,
+      "accepted_rows": 12860,
+      "exact_duplicates_removed": 259,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "skoda.csv",
+      "brand": "Skoda",
+      "raw_rows": 6267,
+      "accepted_rows": 6188,
+      "exact_duplicates_removed": 79,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "toyota.csv",
+      "brand": "Toyota",
+      "raw_rows": 6738,
+      "accepted_rows": 6699,
+      "exact_duplicates_removed": 39,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "vauxhall.csv",
+      "brand": "Vauxhall",
+      "raw_rows": 13632,
+      "accepted_rows": 13258,
+      "exact_duplicates_removed": 374,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    },
+    {
+      "file": "vw.csv",
+      "brand": "Volkswagen",
+      "raw_rows": 15157,
+      "accepted_rows": 14893,
+      "exact_duplicates_removed": 264,
+      "rejected_rows": 0,
+      "rejection_reasons": {}
+    }
+  ]
+}
