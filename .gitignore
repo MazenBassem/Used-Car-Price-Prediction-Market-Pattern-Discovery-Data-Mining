@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Raw Kaggle downloads are obtained from the links in README.md.
+data/raw/
+
+# Experimental later-stage work is intentionally outside the preprocessing branch.
+data/processed/data1_train.csv
+data/processed/data1_test.csv
+models/
+outputs/step-02/
+reports/step-02-data1-eda-and-final-preprocessing.md
+src/eda_data1.py
+src/prepare_model_data1.py
+tests/test_data1_artifacts.py
+tests/test_prepare_model_data1.py
+requirements.txt
+
