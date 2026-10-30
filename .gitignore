@@ -5,6 +5,7 @@ __pycache__/
 
 # Raw Kaggle downloads are obtained from the links in README.md.
 data/raw/
+data/raw_data/
 
 # Experimental later-stage work is intentionally outside the preprocessing branch.
 data/processed/data1_train.csv
@@ -17,4 +18,3 @@ src/prepare_model_data1.py
 tests/test_data1_artifacts.py
 tests/test_prepare_model_data1.py
 requirements.txt
-
