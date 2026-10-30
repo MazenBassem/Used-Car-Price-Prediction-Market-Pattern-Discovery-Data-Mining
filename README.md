@@ -23,7 +23,7 @@ Place the downloaded, unchanged dataset files in `data/raw/`. Raw data should no
 
 - `data/raw/`: original dataset files
 - `data/processed/`: cleaned and model-ready data
-- `notebooks/`: exploratory and presentation notebooks
+- `nootebooks/`: exploratory and presentation notebooks
 - `src/`: reusable Python analysis and modeling code
 - `models/`: saved fitted models
 - `outputs/`: generated figures, tables, and metrics
@@ -61,7 +61,7 @@ python .\src\preprocess_data3.py
 python -m unittest tests.test_preprocess_data1 tests.test_preprocess_data2 tests.test_preprocess_data3 -v
 ```
 
-`src/used-car-prediction.ipynb` loads the cleaned Data 3 file when it is
-available locally or in a Kaggle dataset. It splits the data before fitting
-encoding and scaling transformations, so the exploratory model comparison
-does not leak information from the test set.
+`nootebooks/used-car-prediction.ipynb` loads the cleaned Data 3 file when it is
+available locally or in a Kaggle dataset. It is intentionally limited to
+descriptive exploratory analysis; model training and train/test splitting are
+reserved for a later notebook stage.

@@ -76,6 +76,10 @@ The difference between the mean and median price indicates a right-skewed
 price distribution, so medians are reported alongside means in the segment
 comparisons.
 
+![Numerical feature distributions](figures/numerical-feature-distributions.png)
+
+*Figure 1. Histograms and density curves for the numerical variables.*
+
 ### Categorical variables
 
 | Variable | Most common category | Count |
@@ -93,6 +97,10 @@ comparisons.
 The categorical plots show that the sample is not evenly balanced across
 vehicle types. In particular, gas, front-engine, four-cylinder, and standard
 aspiration vehicles dominate the dataset.
+
+![Categorical feature frequencies](figures/categorical-feature-frequencies.png)
+
+*Figure 2. Frequency charts for the categorical variables.*
 
 ## Price analysis
 
@@ -121,6 +129,10 @@ The five lowest-priced observations are:
 These observations are reported for investigation rather than automatic
 removal. A high or low price may represent a real vehicle segment.
 
+![Price distribution](figures/price-distribution.png)
+
+*Figure 3. Price histogram, box plot, and log-transformed distribution.*
+
 ## Segment comparisons
 
 The notebook compares price distributions by body style, fuel type, brand,
@@ -140,6 +152,17 @@ is less sensitive to extreme observations.
 Hardtops have the highest median price, while hatchbacks have the lowest.
 The hardtop and convertible groups are small, so their medians should be
 interpreted cautiously.
+
+![Price by body style and fuel type](figures/price-by-body-and-fuel.png)
+
+*Figure 4. Price distributions by body style and fuel type.*
+
+The brand comparison below includes only brands with at least three cars so
+that single-observation brands do not dominate the visual interpretation.
+
+![Price by brand](figures/price-by-brand.png)
+
+*Figure 5. Price distributions by brand for brands with at least three cars.*
 
 ### Fuel type and drivetrain
 
@@ -178,10 +201,18 @@ with price. City and highway fuel economy show strong negative associations.
 Correlation does not prove causation and may reflect relationships among the
 vehicle measurements themselves.
 
+![Correlation heatmap](figures/correlation-heatmap.png)
+
+*Figure 6. Correlations among selected numerical variables.*
+
 The notebook also uses scatter plots for price against horsepower, engine
 size, and curb weight, colored by relevant categorical variables. These plots
 help assess whether the relationships are approximately monotonic and whether
 different vehicle segments occupy different price ranges.
+
+![Price relationships](figures/price-relationships.png)
+
+*Figure 7. Price relationships with horsepower, engine size, and curb weight.*
 
 ## Main EDA findings
 
