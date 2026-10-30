@@ -43,10 +43,12 @@ Place the downloaded, unchanged dataset files in `data/raw/`. Raw data should no
 
 - `data/processed/data1_cleaned.csv`: cleaned 97,711-row UK used-car table
 - `data/processed/data2_cleaned.csv`: cleaned 4,009-row used-car table
+- `data/processed/data3_cleaned.csv`: cleaned Car Price Assignment table
 - `reports/step-01-preprocessing.md`: basic preprocessing report for both datasets
 - `outputs/step-01/dataset_audit.json`: machine-readable audit of all raw CSV files
 - `outputs/step-01/data1_preprocessing_summary.json`: Data 1 cleaning summary
 - `outputs/step-01/data2_preprocessing_summary.json`: Data 2 cleaning summary
+- `outputs/step-01/data3_preprocessing_summary.json`: Data 3 cleaning summary
 
 ## Reproduce Step 1
 
@@ -55,6 +57,11 @@ The preprocessing scripts use only the Python standard library. Run:
 ```powershell
 python .\src\preprocess_data1.py
 python .\src\preprocess_data2.py
-python -m unittest tests.test_preprocess_data1 tests.test_preprocess_data2 -v
+python .\src\preprocess_data3.py
+python -m unittest tests.test_preprocess_data1 tests.test_preprocess_data2 tests.test_preprocess_data3 -v
 ```
 
+`src/used-car-prediction.ipynb` loads the cleaned Data 3 file when it is
+available locally or in a Kaggle dataset. It splits the data before fitting
+encoding and scaling transformations, so the exploratory model comparison
+does not leak information from the test set.
