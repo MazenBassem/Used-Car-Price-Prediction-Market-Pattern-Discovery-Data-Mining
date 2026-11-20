@@ -232,7 +232,7 @@ different vehicle segments occupy different price ranges.
 ## Reproducibility
 
 - `src/preprocess_data3.py` rebuilds the cleaned Data 3 table.
-- `notebooks/EDA_Step.ipynb` contains the complete EDA workflow and charts.
+- `notebooks/car-price-eda.ipynb` contains the complete EDA workflow and charts.
 - `outputs/step-01/data3_preprocessing_summary.json` records the preprocessing
   row counts, rejected rows, normalized aliases, and missing-value checks.
 - `tests/test_preprocess_data3.py` tests the Data 3 cleaning rules.

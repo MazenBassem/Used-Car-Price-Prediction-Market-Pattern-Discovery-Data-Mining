@@ -1,67 +1,60 @@
 # Used Car Price Data Mining Project
 
-This project studies two Kaggle used-car datasets separately, then compares their results to identify pricing patterns that generalize across their different markets and schemas.
+This project studies three used-car datasets with different markets and schemas. The preprocessing scripts clean each dataset separately. The Data 3 notebook explores pricing patterns, and the Data 1 notebooks compare models for historical UK listing prices in pounds.
 
-## Datasets
+## Data
 
-1. [100,000 UK Used Car Dataset](https://www.kaggle.com/datasets/adityadesai13/used-car-dataset-ford-and-mercedes)
-2. [Used Car Price Prediction Dataset](https://www.kaggle.com/datasets/taeefnajib/used-car-price-prediction-dataset)
+| Dataset | Where to put raw files | Cleaned file |
+| --- | --- | --- |
+| Data 1 · [100,000 UK Used Car Dataset](https://www.kaggle.com/datasets/adityadesai13/used-car-dataset-ford-and-mercedes) | `data/raw/data1/` | `data/processed/data1_cleaned.csv` |
+| Data 2 · [Used Car Price Prediction Dataset](https://www.kaggle.com/datasets/taeefnajib/used-car-price-prediction-dataset) | `data/raw/data2/used_cars.csv` | `data/processed/data2_cleaned.csv` |
+| Data 3 · Car Price Assignment | `data/raw_data/CarPrice_Assignment.csv` (included) | `data/processed/data3_cleaned.csv` |
 
-Place the downloaded, unchanged dataset files in `data/raw/`. Raw data should not be edited in place.
+The cleaned CSVs are included in the repository. The original Data 1 and Data 2 downloads are only needed to rerun preprocessing.
 
-## Objectives
+## Setup
 
-- Clean missing, duplicate, invalid, and inconsistent data.
-- Explore how vehicle characteristics relate to price.
-- Prepare reproducible features for modeling.
-- Compare Linear Regression, Decision Tree, and Random Forest models.
-- Evaluate regression performance with MAE, RMSE, and R-squared.
-- Use clustering to find groups of cars with similar characteristics.
-- Compare conclusions across the two datasets without merging incompatible markets.
+From the repository root, create a Python 3.12 environment and install the dependencies.
 
-## Structure
-
-- `data/raw/`: original dataset files
-- `data/processed/`: cleaned and model-ready data
-- `nootebooks/`: exploratory and presentation notebooks
-- `src/`: reusable Python analysis and modeling code
-- `models/`: saved fitted models
-- `outputs/`: generated figures, tables, and metrics
-- `reports/`: one report for each project step
-
-## Planned Steps
-
-1. Basic preprocessing — completed separately for Data 1 and Data 2
-2. Exploratory data analysis
-3. Feature engineering and model-specific preprocessing
-4. Regression modeling and evaluation
-5. Clustering and segment interpretation
-6. Cross-dataset comparison
-7. Final report and reproducible project packaging
-
-## Current Outputs
-
-- `data/processed/data1_cleaned.csv`: cleaned 97,711-row UK used-car table
-- `data/processed/data2_cleaned.csv`: cleaned 4,009-row used-car table
-- `data/processed/data3_cleaned.csv`: cleaned Car Price Assignment table
-- `reports/step-01-preprocessing.md`: basic preprocessing report for both datasets
-- `outputs/step-01/dataset_audit.json`: machine-readable audit of all raw CSV files
-- `outputs/step-01/data1_preprocessing_summary.json`: Data 1 cleaning summary
-- `outputs/step-01/data2_preprocessing_summary.json`: Data 2 cleaning summary
-- `outputs/step-01/data3_preprocessing_summary.json`: Data 3 cleaning summary
-
-## Reproduce Step 1
-
-The preprocessing scripts use only the Python standard library. Run:
-
-```powershell
-python .\src\preprocess_data1.py
-python .\src\preprocess_data2.py
-python .\src\preprocess_data3.py
-python -m unittest tests.test_preprocess_data1 tests.test_preprocess_data2 tests.test_preprocess_data3 -v
+```sh
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-`nootebooks/used-car-prediction.ipynb` loads the cleaned Data 3 file when it is
-available locally or in a Kaggle dataset. It is intentionally limited to
-descriptive exploratory analysis; model training and train/test splitting are
-reserved for a later notebook stage.
+On Windows PowerShell, replace the first two commands with `py -3.12 -m venv .venv` and `.\.venv\Scripts\Activate.ps1`.
+
+## Explore and train
+
+Run `python -m jupyterlab` from the repository root and use **Run All** in any notebook.
+
+| Notebook | Purpose |
+| --- | --- |
+| [car-price-eda.ipynb](notebooks/car-price-eda.ipynb) | Explore Data 3. The [EDA report](reports/step-02-eda.md) includes the findings and figures. |
+| [uk-price-baseline.ipynb](notebooks/uk-price-baseline.ipynb) | Compare Linear Regression, Decision Tree, and Random Forest on Data 1. |
+| [uk-price-catboost.ipynb](notebooks/uk-price-catboost.ipynb) | Compare CatBoost models fitted to price and log price on Data 1. |
+| [uk-price-ft-transformer.ipynb](notebooks/uk-price-ft-transformer.ipynb) | Train an FT-Transformer on Data 1. |
+
+Each modeling notebook runs independently. They use the same deterministic split, allocating roughly 64% of listings to training, 16% to validation, and 20% to testing. Identical vehicle profiles stay in the same partition. Validation MAE selects the model or checkpoint, and the held-out set is used for final MAE, RMSE, and R². Training saves model files and logs locally under `outputs/uk-modeling/`.
+
+## Run the tests
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+The tests cover all three data-cleaning scripts, reproducibility and isolation of the UK data splits, and prediction with missing numeric values or unseen categories.
+
+## Rebuild the cleaned data
+
+The preprocessing scripts use only the Python standard library. Run the script for the dataset you want to rebuild from the repository root.
+
+```sh
+python src/preprocess_data1.py
+python src/preprocess_data2.py
+python src/preprocess_data3.py
+```
+
+The [preprocessing report](reports/step-01-preprocessing.md) documents Data 1 and Data 2. The cleaning summaries for all three datasets are in [outputs/step-01](outputs/step-01/).
+
+Future steps include clustering to find groups of similar listings and comparing pricing patterns across datasets.
